@@ -1,0 +1,14 @@
+[
+    {
+        "senha": "A001",
+        "setor": "Secretaria"
+    },
+    {
+        "senha": "P001",
+        "setor": "Tesouraria"
+    },
+    {
+        "senha": "V001",
+        "setor": "Tesouraria"
+    }
+]

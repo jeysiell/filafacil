@@ -1,0 +1,154 @@
+@import url("https://fonts.cdnfonts.com/css/agency-fb");
+
+  
+
+body.containermaster {
+  background-image: url("../fotos/fachada.png"); /* caminho para a imagem de fundo */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  margin: 0;
+  height: 100vh;
+}
+body.containermaster::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #18166e;
+  opacity: 80%;
+  z-index: 0;
+}
+
+header,
+.titulo,
+.container,
+.setor {
+  position: relative;
+  z-index: 1;
+}
+
+/* Geral */
+header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  margin: 20px;
+  width: 455px;
+  height: 65px;
+  z-index: 2;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  margin-top: 110px;
+  justify-content: space-around;
+  position: relative;
+  z-index: 1;
+}
+
+.titulo {
+  color: #ffff;
+  text-align: center;
+  justify-content: center;
+  font-size: 35px;
+  margin-top: 60px;
+  font-family: "agency FB";
+  font-weight: bold;
+}
+
+/* Botões de Setor */
+.btn-setor {
+  margin-top: -60px;
+  width: 220px;
+  background-color: rgb(255, 149, 0);
+  border-radius: 25px;
+  padding: 0.8rem;
+  font-size: 22px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease-in-out;
+  box-sizing: border-box;
+}
+
+.btn-setor:hover {
+  transform: scale(1.05);
+  border-color: #fff9;
+}
+
+.setor {
+  position: relative;
+}
+
+.dropdown-senhas {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.5s ease;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  width: 200px;
+  text-align: center;
+}
+
+.dropdown-senhas.show {
+  max-height: 380px; /* Altura suficiente para conter os botões */
+  opacity: 1;
+}
+
+.dropdown-senhas .button {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 0.9rem;
+}
+
+/* Botões Coloridos */
+.btn1 {
+  background-color: rgb(2, 184, 190);
+  border-radius: 25px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+.btn2 {
+  background-color: #ff0000;
+  border-radius: 25px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+.btn3 {
+  background-color: rgb(36, 128, 0);
+  border-radius: 25px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+.btn4 {
+  background-color: rgb(0, 80, 184);
+  border-radius: 25px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-info {
+  color: #ffff;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.btn-info:hover {
+  transition: all 0.3s ease-in-out;
+  transform: scale(1.05);
+  border-color: #fff9;
+}
