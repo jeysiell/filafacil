@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 * {
   margin: 0;
@@ -17,6 +17,7 @@ body {
 .logo {
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: #18166e;
   border-bottom: 2px solid #fff;
 }
@@ -29,29 +30,24 @@ body {
   justify-content: center;
   background-color: #18166e;
   position: relative;
-  padding: 5px 5px
+  padding: 5px 5px;
 }
 
 .logo a img {
   margin: 0px;
   width: 405px;
   height: 60px;
-  z-index: 2;
 }
 
 .logo-info {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  right: 20px;
-  color: white;
+  position: fixed;
+  right: 30px;
 }
 
 #hora {
-  padding: 18px 18px;
-  margin-right: 0px;
-  font-size: 26px;
-  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  font-family: "poppins",sans-serif;
+  font-size: 18px;
 }
 
 .site-container {
@@ -73,7 +69,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2px;
-  
 }
 
 .senha-container .senha-atual {
@@ -87,13 +82,22 @@ body {
   justify-content: center;
 }
 
+.senha-container .senha-atual h1 {
+  margin-bottom: 15px;
+}
+
 .senha-container .ultimas-senhas {
   text-align: center;
   padding-top: 1rem;
   height: 80%;
   color: #fff;
   background-color: #3b77b3;
-  
+}
+
+.senha-container .ultimas-senhas h4 {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 24px;
 }
 
 #senha-atual {
@@ -146,4 +150,64 @@ iframe {
 }
 #titulosenha {
   font-size: 30px;
+}
+ /* BOTÃO FULLSCREEN */
+.fullscreen-btn {
+  padding: 10px;
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.logo .fullscreen-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 25px;
+}
+
+.fullscreen-btn:hover {
+  transform: scale(1.05);
+}
+
+
+.fullscreen-active .fullscreen-btn {
+  display: none;
+}
+
+/* rodape animaado */
+.marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  background-color: #18166e;
+  border-top: 2px solid #fff;
+}
+
+.track {
+  display: flex;
+  white-space: nowrap;
+  animation: scroll-left 20s linear infinite;
+  font-size: 2.5rem;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  letter-spacing: 2px;
+  will-change: transform;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }

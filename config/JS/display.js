@@ -41,45 +41,49 @@ function atualizarSenha() {
 // Atualiza a senha a cada 3 segundos
 setInterval(atualizarSenha, 3000);
 
-// Rodapé animado (NÃO MEXA!!!!! )
-const texto = document.getElementById('texto');
-const container = document.querySelector('.text-bottom');
+function atualizarHora() {
+  const agora = new Date();
 
-let position = container.clientWidth;
-const speed = 1.5;
+  const diasSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+  const diaSemana = diasSemana[agora.getDay()]; // 0 = Domingo, 1 = Segunda...
 
-function initializePosition() {
-    const textoWidth = texto.clientWidth;
-    position = (container.clientWidth - textoWidth) / 2;
-    texto.style.transform = `translateX(${position}px)`;
+  const horas = agora.getHours().toString().padStart(2, '0');
+  const minutos = agora.getMinutes().toString().padStart(2, '0');
+
+  document.getElementById("hora").innerText = `${diaSemana} ${horas}h${minutos}`;
 }
 
-function animate() {
-    position -= speed;
-    if (position < -texto.clientWidth) {
-        position = container.clientWidth;
-    }
 
-    texto.style.transform = `translateX(${position}px)`;
-    requestAnimationFrame(animate);
-}
+// Chama imediatamente ao carregar
+atualizarHora();
 
-initializePosition();
-animate();
+// Atualiza a cada segundo
+setInterval(atualizarHora, 1000);
 
-// Função para formatar a data e hora no estilo desejado
-function atualizarDataHora() {
-    const agora = new Date();
-    
-    // Meses em português
-    const horas = agora.getHours().toString().padStart(2, '0');
-    const minutos = agora.getMinutes().toString().padStart(2, '0');
-    const segundos = agora.getSeconds().toString().padStart(2, '0');
- 
-    const horaFormatada = `${horas}:${minutos}:${segundos}`;
 
-    document.getElementById("hora").innerText = horaFormatada;
-}
 
-// Atualiza a data e hora a cada segundo
-setInterval(atualizarDataHora, 1000);
+
+const fullscreenBtn = document.querySelector(".fullscreen-btn");
+        const body = document.body;
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    alert(`Erro ao entrar em tela cheia: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        document.addEventListener("fullscreenchange", () => {
+            if (document.fullscreenElement) {
+                body.classList.add("fullscreen-active");
+            } else {
+                body.classList.remove("fullscreen-active");
+            }
+        }
+    )
+;
+
+
