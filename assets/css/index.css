@@ -1,0 +1,150 @@
+/* imports */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+/* Reset básico CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: sans-serif;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+@media screen and (min-width: 1080px) {
+  html,
+  body {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+  }
+
+  .container {
+    background-image: url("../fotos/1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: fixed;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+  }
+
+  .container section {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+  }
+  .container section .logo {
+    position: fixed;
+    top: 140px;
+    left: 60px;
+    width: 150px;
+    height: 150px;
+    display: flex;
+  }
+  .container section .fila {
+    width: 1600px;
+    height: 889px;
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    transition: transform 0.3s ease;
+    cursor: zoom-in;
+  }
+  .container section .title {
+    position: fixed;
+    top: 135px;
+    left: 210px;
+    font-size: 100px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    color: #fff;
+  }
+  .container section .sub-title {
+    position: fixed;
+    top: 265px;
+    left: 215px;
+    font-size: 20px;
+    color: #f4b158;
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    display: inline-block;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 5px;
+  }
+
+  .container section .menu {
+    background-color: none;
+    max-width: 400px;
+    max-height: 300px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 47%;
+    left: 14%;
+  }
+
+  .container section .menu .btn {
+    background-color: #f4b158;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 9px;
+    font-family: "poppins", sans-serif;
+    font-weight: 500;
+    position: relative;
+    border-style: none;
+    box-shadow: 0px 10px 96px #000000;
+    font-size: 20px;
+    color: #fff;
+  }
+  
+  footer {
+    display: block;
+    font-family: "poppins", sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    position: fixed; /* ou use absolute, se preferir */
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    color: #999;
+    font-family: "Poppins", sans-serif;
+    pointer-events: none; /* impede clique acidental */
+    z-index: 999;
+  }
+}

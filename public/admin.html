@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sistema de Senhas - Administração</title>
-
+    <title>FilaFácil</title>
+    <link rel="icon" href="./assets/fotos/logo.ico" type="image/x-icon">
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/admin.css" />
 
@@ -15,6 +15,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap"
         rel="stylesheet" />
+
 </head>
 
 <body id="body">
@@ -33,7 +34,7 @@
         <!-- Menu Senhas -->
         <div class="dropdown text-center mt-2" id="dropdownSetoresWrapper">
             <button
-                class="btn btn-primary dropdown-toggle"
+                class="btn btn-primary dropdown-toggle option1"
                 type="button"
                 id="dropdownSetores"
                 aria-haspopup="true"
@@ -52,29 +53,10 @@
             </div>
         </div>
 
-        <!-- Menu Admin -->
-        <div class="dropdown text-center mt-3" id="dropdownAdminWrapper">
-            <button
-                class="btn btn-primary dropdown-toggle"
-                type="button"
-                id="dropdownAdmin"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false">
-                Menu Admin
-            </button>
-            <div class="dropdown-menu text-center" aria-labelledby="dropdownAdmin">
-                <button class="dropdown-item" onclick="mostrarSetor('administracao')">
-                    Configurar Impressora
-                </button>
-                <button class="dropdown-item disabled">Em breve...</button>
-            </div>
-        </div>
-
         <!-- Menu Telas -->
         <div class="dropdown text-center mt-3" id="dropdownTelasWrapper">
             <button
-                class="btn btn-primary dropdown-toggle"
+                class="btn btn-primary dropdown-toggle option2"
                 type="button"
                 id="dropdownTelas"
                 data-toggle="dropdown"
@@ -85,15 +67,14 @@
             <div class="dropdown-menu text-center" aria-labelledby="dropdownTelas">
                 <button
                     class="dropdown-item"
-                    onclick="window.location.href='https://filafacil.free.nf/public/gerar_senha.php'">
+                    onclick="window.location.href='https://filafacil.online/public/gerar_senha.html'">
                     Tela Gerar Senha
                 </button>
                 <button
                     class="dropdown-item"
-                    onclick="window.location.href='https://filafacil.free.nf/public/display.php'">
+                    onclick="window.location.href='https://filafacil.online/public/display.html'">
                     Tela de Exibição
                 </button>
-                <button class="dropdown-item disabled">Em breve...</button>
             </div>
         </div>
     </div>
@@ -105,7 +86,7 @@
             <h1 class="titulo mt-3">SECRETARIA</h1>
             <div class="row mt-4">
                 <!-- Matrícula -->
-                <div class="col-md-4">
+                <div class="cool-md-4">
                     <div class="card text-white bg-primary mb-3 card-matricula">
                         <div class="card-header">Matrícula</div>
                         <div class="card-body">
@@ -123,7 +104,7 @@
                 </div>
 
                 <!-- Rematrícula -->
-                <div class="col-md-4">
+                <div class="cool-md-4">
                     <div class="card text-white bg-success mb-3 card-rematricula">
                         <div class="card-header">Rematrícula</div>
                         <div class="card-body">
@@ -141,7 +122,7 @@
                 </div>
 
                 <!-- Atendimento -->
-                <div class="col-md-4">
+                <div class="cool-md-4">
                     <div class="card text-white bg-warning mb-3 card-atendimento">
                         <div class="card-header">Atendimento</div>
                         <div class="card-body">
@@ -159,7 +140,7 @@
                 </div>
 
                 <!-- Bolsa - Secretaria -->
-                <div class="col-md-4">
+                <div class="cool-md-4">
                     <div class="card text-white bg-danger mb-3 card-bolsa">
                         <div class="card-header">Bolsa</div>
                         <div class="card-body">
@@ -186,7 +167,7 @@
         <div id="setor-tesouraria" class="setor">
             <h1 class="titulo mt-3">TESOURARIA</h1>
             <div class="row mt-4">
-                <div class="col-md-4">
+                <div class="cool-md-4">
                     <div class="card text-white bg-info mb-3 card-pagamentos">
                         <div class="card-header">Pagamentos</div>
                         <div class="card-body">
@@ -204,7 +185,7 @@
                 </div>
 
                 <!-- 2ª Via de Boletos - Tesouraria -->
-                <div class="col-md-4">
+                <div class="cool-md-4">
                     <div class="card text-white bg-dark mb-3 card-2via">
                         <div class="card-header">2ª Via Boletos</div>
                         <div class="card-body">

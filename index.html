@@ -1,62 +1,29 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>FilaFácil - Página Inicial</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-    body {
-      margin: 0;
-      padding: 0;
-      background: #f0f4f8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .container {
-      text-align: center;
-      padding: 30px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      max-width: 400px;
-      width: 100%;
-    }
-    h1 {
-      margin-bottom: 20px;
-      color: #333;
-    }
-    .btn {
-      display: block;
-      width: 100%;
-      margin: 10px 0;
-      padding: 15px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      background-color: #0056b3;
-      color: white;
-      cursor: pointer;
-      transition: background 0.3s;
-      text-decoration: none;
-    }
-    .btn:hover {
-      background-color: #004099;
-    }
-  </style>
-</head>
-<body>
- <div class="container">
-    <h1>🎫 Sistema de Senhas - FilaFácil</h1>
-
-    <a class="btn" href="./public/gerar_senha.html">🖨️ Gerar Senha (Totem)</a>
-    <a class="btn" href="./public/display.html">📺 Tela de Chamadas (TV)</a>
-    <a class="btn" href="./public/admin.html">⚙️ Painel Administrativo</a>
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>FilaFácil</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="stylesheet" href="./assets/css/index.css" />
+    <link rel="icon" href="./assets/fotos/logo.ico" type="image/x-icon" />
+  </head>
+  <body class="container">
+    <section>
+      <img src="./assets/fotos/logo.ico" alt="logo" class="logo" />
+      <img src="./assets/fotos/2.png" alt="fila" class="fila" />
+      <h1 class="title">FilaFacil</h1>
+      <h2 class="sub-title">Organize filas, Simplifique atendimentos</h2>
+      <nav class="menu">
+        <a class="btn" href="./public/gerar_senha.html">🖨️ Gerar Senha  - Tablet</a>
+        <a class="btn" href="./public/display.html">📺 Tela de Chamadas - TV </a>
+        <a class="btn" href="./public/admin.html">⚙️ Painel Administrativo</a>
+      </nav>
+    </section>
+    <footer>
+      &copy; <span id="ano"></span>Jeysiell Felipe. Todos os direitos reservados.
+    </footer>
+  </body>
 </html>

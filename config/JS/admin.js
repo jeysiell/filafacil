@@ -167,24 +167,3 @@ dropdownWrapper.addEventListener("mouseenter", () => {
 dropdownWrapper.addEventListener("mouseleave", () => {
   dropdownToggle.setAttribute("aria-expanded", "false");
 });
-
-async function salvarConfig() {
-  const ip = document.getElementById("ip").value;
-  const porta = document.getElementById("porta").value;
-  const timeout = document.getElementById("timeout").value;
-
-  const resposta = await fetch("/salvar_configuracao", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      ip_impressora: ip,
-      porta_impressora: parseInt(porta),
-      timeout: parseInt(timeout),
-    }),
-  });
-
-  const dados = await resposta.json();
-  const msg = document.getElementById("mensagem");
-  msg.textContent = dados.mensagem || dados.erro;
-  msg.style.color = dados.erro ? "red" : "green";
-}

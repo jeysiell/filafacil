@@ -86,6 +86,7 @@ table {
   display: flex;
   flex-direction: column;
   align-items: center;
+
 }
 
 .sidebar.visible {
@@ -98,12 +99,13 @@ table {
   margin-bottom: 14px;
   background-color: #1e1bcc;
   border-radius: 2rem;
-  padding: 10px;
+  padding: 10px 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   border: none;
   color: white;
   font-weight: bold;
   transition: transform 0.3s ease;
+  margin: 12px;
 }
 
 .sidebar button:hover {
@@ -129,12 +131,22 @@ h2 {
   z-index: 1002;
   background: none;
   position: fixed;
-  top: -35px;
+  top: -40px;
+  font-size: 35px;
 }
 
 /* ================== */
 /* Cards */
 /* ================== */
+.cool-md-4 {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -373,32 +385,37 @@ h2 {
   background-color: #007bff;
   color: white;
   border-radius: 4px;
-  padding: 10px;
-  width: 150px; /* Ajuste a largura conforme necessário */
+  padding: 10px 10px;
+  width: 200px; /* Ajuste a largura conforme necessário */
   text-align: center;
+  font-size: 18px;
 }
 
 .dropdown-menu {
   display: none; /* Inicialmente oculto */
   position: absolute;
-  background-color: white;
+  background-color: none;
   padding: 10px;
   z-index: 1000;
   border-radius: 4px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  
 }
 
 .dropdown-menu .dropdown-item {
-  padding: 5px 10px;
+  padding: 10px 10px;
   color: black;
   text-align: left;
-  background-color: transparent;
+  background-color: #1e1bcc;
   border: none;
-  width: 100%;
+ 
+  color: #fff;
+  text-align: center;
+  width: 200px;
+  font-size: 18px;
 }
 
 .dropdown-menu .dropdown-item:hover {
-  background-color: #f1f1f1; /* Cor de fundo ao passar o mouse */
+  background-color: #066ecf; /* Cor de fundo ao passar o mouse */
 }
 
 /* Exibir o submenu ao passar o mouse sobre o botão do menu */
@@ -406,7 +423,10 @@ h2 {
 #dropdownAdminWrapper:hover .dropdown-menu,
 #dropdownTelasWrapper:hover .dropdown-menu {
   display: block; /* Exibe o submenu */
-  margin-top: 0; /* Ajuste a margem se necessário */
+  margin-top: 0;
+  position: fixed;
+  top: 9px;
+  left: 247px; /* Ajuste a margem se necessário */
 }
 
 /* Posição e aparência dos wrappers */
