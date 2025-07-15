@@ -902,3 +902,19 @@ a {
     transition: transform 0.3s ease;
   }
 }
+
+
+/* responsividade heigth */
+@media screen and (max-height: 720px) {
+  
+  .container section .menu {
+    background-color: none;
+    max-width: 400px;
+    max-height: 300px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 260px;
+    left: 260px;
+  }
+}
