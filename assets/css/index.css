@@ -106,7 +106,7 @@ a {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 35%;
+    top: 45%;
     left: 260px;
   }
 
@@ -180,7 +180,7 @@ a {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 35%;
+    top: 45%;
     left: 265px;
   }
 }
@@ -201,7 +201,7 @@ a {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 35%;
+    top: 45%;
     left: 263px;
   }
 }
@@ -222,7 +222,7 @@ a {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 30%;
+    top: 40%;
     left: 263px;
   }
 }
