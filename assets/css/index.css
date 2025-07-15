@@ -903,6 +903,90 @@ a {
   }
 }
 
+@media screen and (max-width: 300px) {
+  .container section .logo {
+    position: fixed;
+    top: 59px;
+    left: 30px;
+    width: 70px;
+    height: 70px;
+    display: flex;
+  }
+
+  .container section .title {
+    position: fixed;
+    top: 58px;
+    left: 100px;
+    font-size: 40px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    color: #fff;
+    cursor: default;
+  }
+  .container section .sub-title {
+    position: fixed;
+    top: 105px;
+    left: 104px;
+    font-size: 8px;
+    color: #f4b158;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    display: inline-block;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 5px;
+    cursor: default;
+  }
+
+  .container section .menu {
+    background-color: none;
+    max-width: 400px;
+    max-height: 300px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 150px;
+    left: 85px;
+  }
+
+  .container section .menu .btn {
+    background-color: #f4b158;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 9px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    position: relative;
+    border-style: none;
+    box-shadow: 0px 10px 96px #000000;
+    font-size: 9px;
+    color: #fff;
+
+    /* borda de texto */
+    text-shadow: -1px -1px 0 #0000002d, 1px -1px 0 #0000002d,
+      -1px 1px 0 #0000002d, 1px 1px 0 #0000002d;
+
+    /* Transição suave */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+
+  .container section .menu .btn:hover {
+    background-color: #da953b;
+    transform: scale(1.05); /* Zoom suave */
+  }
+
+  .container section .fila {
+    width: 250px;
+    height: 209px;
+    position: fixed;
+    right: 50px;
+    left: 30px;
+    bottom: 50px;
+    transition: transform 0.3s ease;
+  }
+}
+
 
 /* responsividade heigth */
 @media screen and (max-height: 720px) {
@@ -915,6 +999,7 @@ a {
     flex-direction: column;
     position: fixed;
     top: 260px;
-    left: 260px;
+    left: 80px;
   }
 }
+
