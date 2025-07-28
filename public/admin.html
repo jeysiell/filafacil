@@ -2,219 +2,121 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FilaFácil</title>
-    <link rel="icon" href="./assets/fotos/logo.ico" type="image/x-icon">
-    <!-- CSS -->
-    <link rel="stylesheet" href="../assets/css/admin.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FilaFácil</title>
+  <link rel="icon" href="./assets/fotos/logo.ico" type="image/x-icon">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .dropdown-content {
+      display: none;
+    }
 
-    <!-- Fontes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap"
-        rel="stylesheet" />
-
+    .dropdown-content.show {
+      display: block;
+    }
+  </style>
 </head>
 
-<body id="body">
-    <!-- Fundo escurecido -->
-    <div id="overlay" class="overlay hidden"></div>
+<body class="bg-gray-900 text-white font-sans">
+  <!-- Fundo escurecido -->
+  <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
 
-    <!-- Botão do Menu Hambúrguer -->
-    <button id="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
-        <span></span>
-    </button>
+  <!-- Botão do Menu Hambúrguer -->
+  <button id="menu-toggle" class="fixed top-4 left-4 z-50 p-2 bg-gray-800 rounded-md shadow-md" aria-label="Abrir menu" aria-expanded="false">
+    <span class="block w-6 h-0.5 bg-white mb-1"></span>
+    <span class="block w-6 h-0.5 bg-white mb-1"></span>
+    <span class="block w-6 h-0.5 bg-white"></span>
+  </button>
 
-    <!-- Menu Lateral -->
-    <div class="sidebar">
-        <h2>Menu FilaFácil</h2>
+  <!-- Menu Lateral -->
+  <div class="sidebar fixed top-0 left-0 h-full w-64 bg-gray-800 shadow-lg z-50 p-6 space-y-6">
+    <h2 class="text-xl font-bold text-center">Menu FilaFácil</h2>
 
-        <!-- Menu Senhas -->
-        <div class="dropdown text-center mt-2" id="dropdownSetoresWrapper">
-            <button
-                class="btn btn-primary dropdown-toggle option1"
-                type="button"
-                id="dropdownSetores"
-                aria-haspopup="true"
-                aria-expanded="false">
-                Menu Senhas
-            </button>
-            <div
-                class="dropdown-menu text-center"
-                aria-labelledby="dropdownSetores">
-                <button class="dropdown-item" onclick="mostrarSetor('secretaria')">
-                    Secretaria
-                </button>
-                <button class="dropdown-item" onclick="mostrarSetor('tesouraria')">
-                    Tesouraria
-                </button>
-            </div>
+    <div class="space-y-4">
+      <!-- Menu Senhas -->
+      <div class="text-center">
+        <button id="dropdownSetores" class="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition" onclick="toggleDropdown('dropdownContentSetores')">Menu Senhas</button>
+        <div id="dropdownContentSetores" class="mt-2 space-y-2 dropdown-content">
+          <button class="w-full bg-gray-700 py-2 rounded hover:bg-gray-600" onclick="mostrarSetor('secretaria')">Secretaria</button>
+          <button class="w-full bg-gray-700 py-2 rounded hover:bg-gray-600" onclick="mostrarSetor('tesouraria')">Tesouraria</button>
         </div>
+      </div>
 
-        <!-- Menu Telas -->
-        <div class="dropdown text-center mt-3" id="dropdownTelasWrapper">
-            <button
-                class="btn btn-primary dropdown-toggle option2"
-                type="button"
-                id="dropdownTelas"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false">
-                Menu Telas
-            </button>
-            <div class="dropdown-menu text-center" aria-labelledby="dropdownTelas">
-                <button
-                    class="dropdown-item"
-                    onclick="window.location.href='https://filafacil.online/public/gerar_senha.html'">
-                    Tela Gerar Senha
-                </button>
-                <button
-                    class="dropdown-item"
-                    onclick="window.location.href='https://filafacil.online/public/display.html'">
-                    Tela de Exibição
-                </button>
-            </div>
+      <!-- Menu Telas -->
+      <div class="text-center">
+        <button id="dropdownTelas" class="w-full bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition" onclick="toggleDropdown('dropdownContentTelas')">Menu Telas</button>
+        <div id="dropdownContentTelas" class="mt-2 space-y-2 dropdown-content">
+          <button class="w-full bg-gray-700 py-2 rounded hover:bg-gray-600" onclick="window.location.href='https://filafacil.online/public/gerar_senha.html'">Tela Gerar Senha</button>
+          <button class="w-full bg-gray-700 py-2 rounded hover:bg-gray-600" onclick="window.location.href='https://filafacil.online/public/display.html'">Tela de Exibição</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conteúdo Principal -->
+  <div class="ml-72 p-6">
+    <!-- Secretaria -->
+    <div id="setor-secretaria" class="setor ativo">
+      <h1 class="text-2xl font-bold mb-4 text-blue-400">SECRETARIA</h1>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Cartões -->
+        <div class="bg-blue-600 text-white p-4 rounded shadow-md">
+          <h3 class="text-lg font-semibold">Matrícula</h3>
+          <p class="mt-2">Em Espera: <span id="contador-matricula-secretaria">0</span></p>
+          <button class="mt-4 bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700" onclick="chamarSenhaPorTipo('matricula', 'secretaria')">Chamar Senha</button>
+        </div>
+        <div class="bg-green-600 text-white p-4 rounded shadow-md">
+          <h3 class="text-lg font-semibold">Rematrícula</h3>
+          <p class="mt-2">Em Espera: <span id="contador-rematricula-secretaria">0</span></p>
+          <button class="mt-4 bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700" onclick="chamarSenhaPorTipo('rematricula', 'secretaria')">Chamar Senha</button>
+        </div>
+        <div class="bg-yellow-600 text-white p-4 rounded shadow-md">
+          <h3 class="text-lg font-semibold">Atendimento</h3>
+          <p class="mt-2">Em Espera: <span id="contador-atendimento-secretaria">0</span></p>
+          <button class="mt-4 bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700" onclick="chamarSenhaPorTipo('atendimento', 'secretaria')">Chamar Senha</button>
+        </div>
+        <div class="bg-red-600 text-white p-4 rounded shadow-md">
+          <h3 class="text-lg font-semibold">Bolsa</h3>
+          <p class="mt-2">Em Espera: <span id="contador-bolsa-secretaria">0</span></p>
+          <button class="mt-4 bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700" onclick="chamarSenhaPorTipo('bolsa', 'secretaria')">Chamar Senha</button>
+        </div>
+      </div>
+      <p id="senha-chamada-secretaria" class="mt-6 text-lg font-medium text-center"></p>
     </div>
 
-    <!-- Conteúdo Principal -->
-    <div class="content">
-        <!-- Secretaria -->
-        <div id="setor-secretaria" class="setor ativo">
-            <h1 class="titulo mt-3">SECRETARIA</h1>
-            <div class="row mt-4">
-                <!-- Matrícula -->
-                <div class="cool-md-4">
-                    <div class="card text-white bg-primary mb-3 card-matricula">
-                        <div class="card-header">Matrícula</div>
-                        <div class="card-body">
-                            <div class="espera-container">
-                                <h5 class="card-title">Em Espera:</h5>
-                                <p class="card-text" id="contador-matricula-secretaria">0</p>
-                            </div>
-                            <button
-                                class="btn btn-light"
-                                onclick="chamarSenhaPorTipo('matricula', 'secretaria' )">
-                                Chamar Senha
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Rematrícula -->
-                <div class="cool-md-4">
-                    <div class="card text-white bg-success mb-3 card-rematricula">
-                        <div class="card-header">Rematrícula</div>
-                        <div class="card-body">
-                            <div class="espera-container">
-                                <h5 class="card-title">Em Espera:</h5>
-                                <p class="card-text" id="contador-rematricula-secretaria">0</p>
-                            </div>
-                            <button
-                                class="btn btn-light"
-                                onclick="chamarSenhaPorTipo( 'rematricula', 'secretaria')">
-                                Chamar Senha
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Atendimento -->
-                <div class="cool-md-4">
-                    <div class="card text-white bg-warning mb-3 card-atendimento">
-                        <div class="card-header">Atendimento</div>
-                        <div class="card-body">
-                            <div class="espera-container">
-                                <h5 class="card-title">Em Espera:</h5>
-                                <p class="card-text" id="contador-atendimento-secretaria">0</p>
-                            </div>
-                            <button
-                                class="btn btn-light"
-                                onclick="chamarSenhaPorTipo('atendimento', 'secretaria')">
-                                Chamar Senha
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bolsa - Secretaria -->
-                <div class="cool-md-4">
-                    <div class="card text-white bg-danger mb-3 card-bolsa">
-                        <div class="card-header">Bolsa</div>
-                        <div class="card-body">
-                            <div class="espera-container">
-                                <h5 class="card-title">Em Espera:</h5>
-                                <p class="card-text" id="contador-bolsa-secretaria">0</p>
-                            </div>
-                            <button
-                                class="btn btn-light"
-                                onclick="chamarSenhaPorTipo('bolsa', 'secretaria')">
-                                Chamar Senha
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="chamar-senha mt-4">
-                    <p id="senha-chamada-secretaria" class="mt-3"></p>
-                </div>
-            </div>
+    <!-- Tesouraria -->
+    <div id="setor-tesouraria" class="setor hidden">
+      <h1 class="text-2xl font-bold mb-4 text-blue-400">TESOURARIA</h1>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Cartão para Pagamentos -->
+        <div class="bg-cyan-600 text-white p-4 rounded shadow-md">
+          <h3 class="text-lg font-semibold">Pagamentos</h3>
+          <p class="mt-2">Em Espera: <span id="contador-pagamentos-tesouraria">0</span></p>
+          <button class="mt-4 bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700" onclick="chamarSenhaPorTipo('pagamentos', 'tesouraria')">Chamar Senha</button>
         </div>
 
-        <!-- Tesouraria -->
-        <div id="setor-tesouraria" class="setor">
-            <h1 class="titulo mt-3">TESOURARIA</h1>
-            <div class="row mt-4">
-                <div class="cool-md-4">
-                    <div class="card text-white bg-info mb-3 card-pagamentos">
-                        <div class="card-header">Pagamentos</div>
-                        <div class="card-body">
-                            <div class="espera-container">
-                                <h5 class="card-title">Em Espera:</h5>
-                                <p class="card-text" id="contador-pagamentos-tesouraria">0</p>
-                            </div>
-                            <button
-                                class="btn btn-light"
-                                onclick="chamarSenhaPorTipo('pagamentos', 'tesouraria')">
-                                Chamar Senha
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2ª Via de Boletos - Tesouraria -->
-                <div class="cool-md-4">
-                    <div class="card text-white bg-dark mb-3 card-2via">
-                        <div class="card-header">2ª Via Boletos</div>
-                        <div class="card-body">
-                            <div class="espera-container">
-                                <h5 class="card-title">Em Espera:</h5>
-                                <p id="contador-2viaboleto-tesouraria">0</p>
-                            </div>
-                            <button
-                                class="btn btn-light"
-                                onclick="chamarSenhaPorTipo('2viaboleto', 'tesouraria')">
-                                Chamar Senha
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="chamar-senha mt-4">
-                    <p id="senha-chamada-tesouraria" class="mt-3"></p>
-                </div>
-            </div>
+        <!-- Cartão para 2ª Via de Boletos -->
+        <div class="bg-gray-700 text-white p-4 rounded shadow-md">
+          <h3 class="text-lg font-semibold">2ª Via Boletos</h3>
+          <p class="mt-2">Em Espera: <span id="contador-2viaboleto-tesouraria">0</span></p>
+          <button class="mt-4 bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700" onclick="chamarSenhaPorTipo('2viaboleto', 'tesouraria')">Chamar Senha</button>
         </div>
+
+        <!-- Cartão para novos tipos de senha (exemplo) -->
+        <div class="bg-gray-600 text-white p-4 rounded shadow-md">
+          <h3 class="text-lg font-semibold">Novo Tipo de Senha</h3>
+          <p class="mt-2">Em Espera: <span id="contador-novo-tipo-tesouraria">0</span></p>
+          <button class="mt-4 bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700" onclick="chamarSenhaPorTipo('novo_tipo', 'tesouraria')">Chamar Senha</button>
+        </div>
+      </div>
+      <p id="senha-chamada-tesouraria" class="mt-6 text-lg font-medium text-center"></p>
     </div>
 
     <!-- Tela de carregamento -->
-    <div id="loading-overlay">
-        <div class="spinner"></div>
+    <div id="loading-overlay" class="fixed inset-0 bg-gray-800 bg-opacity-80 flex items-center justify-center hidden">
+      <div class="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
     </div>
-
-    <!-- Scripts -->
     <script src="../config/JS/admin.js"></script>
 </body>
 
