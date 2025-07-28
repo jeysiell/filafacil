@@ -4,7 +4,7 @@ let beep = new Audio("../assets/audio/beep2.mp3");
 function chamarTransicaoSenha(senha, setor) {
   const transicao = document.getElementById("transicaoSenha");
 
-  transicao.innerHTML = `</strong><br> </strong><br> </strong><br> </strong><br> </strong><br> </strong><br> </strong><br> Senha <strong>${senha}</strong><br>${setor}`;
+  transicao.innerHTML = ` </strong><br> </strong><br> </strong><br> </strong><br> </strong><br> </strong><br> Senha <strong>${senha}</strong><br>${setor}`;
   transicao.style.display = "block";
 
   setTimeout(() => {
