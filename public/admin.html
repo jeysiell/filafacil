@@ -49,6 +49,7 @@
         <div id="dropdownContentTelas" class="mt-2 space-y-2 dropdown-content">
           <button class="w-full bg-gray-700 py-2 rounded hover:bg-gray-600" onclick="window.location.href='https://filafacil.online/public/gerar_senha.html'">Tela Gerar Senha</button>
           <button class="w-full bg-gray-700 py-2 rounded hover:bg-gray-600" onclick="window.location.href='https://filafacil.online/public/display.html'">Tela de Exibição</button>
+          <button class="w-full bg-gray-700 py-2 rounded hover:bg-gray-600" onclick="mostrarSetor('display')">Configuraçao de video</button>
         </div>
       </div>
     </div>
@@ -112,6 +113,31 @@
       </div>
       <p id="senha-chamada-tesouraria" class="mt-6 text-lg font-medium text-center"></p>
     </div>
+    <!-- Tela de Exibição -->
+    <!-- Tela de Exibição -->
+    <div id="setor-display" class="setor hidden">
+      <h1 class="text-2xl font-bold mb-4 text-green-400">CONFIGURAÇÃO DE VÍDEO</h1>
+      <div class="bg-gray-800 p-6 rounded shadow-md">
+        
+        <label for="video-url" class="block mb-2">URL do Vídeo (YouTube embed):</label>
+        <input type="text" id="video-url" placeholder="https://www.youtube.com/embed/ID_DO_VIDEO" 
+               class="w-full p-2 text-black rounded mb-4">
+      
+        <button onclick="enviarVideo()" 
+                class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded">
+          Salvar Vídeo
+        </button>
+      
+        <!-- Botão para limpar a tabela -->
+        <button onclick="limparVideos()" 
+                class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded ml-2">
+          Limpar Todos os Vídeos
+        </button>
+      
+        <p id="status-video" class="mt-4 text-sm"></p>
+      </div>
+    </div>
+      
 
     <!-- Tela de carregamento -->
     <div id="loading-overlay" class="fixed inset-0 bg-gray-800 bg-opacity-80 flex items-center justify-center hidden">

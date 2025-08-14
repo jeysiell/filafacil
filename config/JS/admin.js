@@ -3,7 +3,7 @@ let lastCountSecretaria = 0;
 let lastCountTesouraria = 0;
 
 function chamarSenhaPorTipo(tipo, setor) {
-  fetch(`https://filafacil-api-production.up.railway.app/chamar_senha.php`, {
+  fetch(`http://127.0.0.1:3000/chamar_senha`, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -50,7 +50,7 @@ const ultimosContadores = {
 function atualizarTodosContadoresPorSetor() {
   for (const setor in tiposPorSetor) {
     tiposPorSetor[setor].forEach((tipo) => {
-      fetch(`https://filafacil-api-production.up.railway.app/contador.php`, {
+      fetch(`http://127.0.0.1:3000/contador`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -109,4 +109,64 @@ if (dropdownWrapper && dropdownToggle) {
 function toggleDropdown(dropdownId) {
       const dropdown = document.getElementById(dropdownId);
       dropdown.classList.toggle('show');
+}
+
+async function enviarVideo() {
+  const url = document.getElementById("video-url").value.trim();
+  const status = document.getElementById("status-video");
+
+  if (!url) {
+    status.textContent = "Por favor, insira a URL do vídeo.";
+    status.style.color = "red";
+    return;
+  }
+
+  try {
+    const res = await fetch("http://127.0.0.1:3000/enviarvideo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ url })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      status.textContent = data.erro || "Erro ao enviar vídeo.";
+      status.style.color = "red";
+      return;
+    }
+
+    // Verifica se foi vídeo ou playlist
+    let tipoMsg = data.tipo === 'playlist' ? 'Playlist' : 'Vídeo';
+    status.textContent = `${tipoMsg} atualizado(a) com sucesso!`;
+    status.style.color = "lightgreen";
+
+    document.getElementById("video-url").value = "";
+
+  } catch (err) {
+    console.error(err);
+    status.textContent = "Erro ao salvar vídeo.";
+    status.style.color = "red";
+  }
+}
+
+function limparVideos() {
+    if (confirm("Tem certeza que deseja remover TODOS os vídeos da tabela?")) {
+        fetch('http://localhost:3000/videos/limpar', {
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('status-video').textContent = data.message || data.erro;
+            document.getElementById('status-video').classList.remove('text-green-400', 'text-red-400');
+            document.getElementById('status-video').classList.add(data.status === "success" ? 'text-green-400' : 'text-red-400');
+        })
+        .catch(err => {
+            document.getElementById('status-video').textContent = 'Erro ao limpar vídeos: ' + err;
+            document.getElementById('status-video').classList.remove('text-green-400');
+            document.getElementById('status-video').classList.add('text-red-400');
+        });
+    }
 }

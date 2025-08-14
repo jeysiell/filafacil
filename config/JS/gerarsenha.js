@@ -3,15 +3,15 @@ function gerarSenha(tipo, setorId) {
   formData.append("tipo", tipo);
   formData.append("setor_id", setorId);
 
-  fetch("https://filafacil-api-production.up.railway.app/gerarsenha.php", {
+  fetch("http://127.0.0.1:3000/gerarsenha", {
     method: "POST",
-    body: formData,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ tipo, setor_id: setorId }),
   })
     .then((response) => response.json())
     .then((data) => {
       if (data.senha) {
         console.log(`Senha gerada: ${data.senha}`);
-        // Fecha o dropdown após a geração da senha
         toggleDropdown(setorId === 1 ? "secretaria" : "tesouraria");
       } else {
         alert(`Erro: ${data.erro}`);

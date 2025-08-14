@@ -32,7 +32,8 @@
           <iframe
             id="youtube-iframe"
             title="video-container"
-            src="https://www.youtube.com/embed/5T-YfW4N6HI?autoplay=1&mute=1"
+            src="https://www.youtube.com/embed/5T-YfW4N6HI?&mute=1"
+            frameborder="0"
             allow="autoplay; encrypted-media"
             allowfullscreen
           >
@@ -104,6 +105,14 @@
           </div>
         </div>
       </div>
+      <script>
+          function toggleMute() {
+              const iframe = document.getElementById('video-frame');
+              const src = new URL(iframe.src);
+              src.searchParams.set('mute', src.searchParams.get('mute') === '1' ? '0' : '1');
+              iframe.src = src.toString();
+          }
+          </script>
       <script src="../config/JS/display.js"></script>
       <div
         id="transicaoSenha"

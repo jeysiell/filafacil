@@ -22,7 +22,7 @@ function chamarTransicaoSenha(senha, setor) {
 
 
 function atualizarSenha() {
-  fetch("https://filafacil-api-production.up.railway.app/display.php")
+  fetch("http://127.0.0.1:3000/display")
     .then((response) => {
       if (!response.ok) {
         throw new Error(`Erro HTTP: ${response.status}`);
@@ -103,3 +103,23 @@ document.addEventListener("fullscreenchange", () => {
   }
 });
 
+async function atualizarVideo() {
+    try {
+        const res = await fetch('http://localhost:3000/video'); // Troque para seu domínio online
+        const data = await res.json();
+
+        if (data.url) {
+            const iframe = document.getElementById('youtube-iframe');
+
+            // Só troca se for diferente do que já está
+            if (!iframe.src.includes(data.url)) {
+                iframe.src = data.url + "?autoplay=1&mute=1";
+            }
+        }
+    } catch (error) {
+        console.error("Erro ao carregar vídeo:", error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', atualizarVideo);
+setInterval(atualizarVideo, 10000); // Atualiza a cada 1 min
