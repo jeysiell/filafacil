@@ -3,7 +3,7 @@ function gerarSenha(tipo, setorId) {
   formData.append("tipo", tipo);
   formData.append("setor_id", setorId);
 
-  fetch("http://127.0.0.1:3000/gerarsenha", {
+  fetch("https://filafacil-api.onrender.com/gerarsenha", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ tipo, setor_id: setorId }),

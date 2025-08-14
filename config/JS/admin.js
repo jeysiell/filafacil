@@ -3,7 +3,7 @@ let lastCountSecretaria = 0;
 let lastCountTesouraria = 0;
 
 function chamarSenhaPorTipo(tipo, setor) {
-  fetch(`http://127.0.0.1:3000/chamar_senha`, {
+  fetch(`https://filafacil-api.onrender.com/chamar_senha`, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -50,7 +50,7 @@ const ultimosContadores = {
 function atualizarTodosContadoresPorSetor() {
   for (const setor in tiposPorSetor) {
     tiposPorSetor[setor].forEach((tipo) => {
-      fetch(`http://127.0.0.1:3000/contador`, {
+      fetch(`https://filafacil-api.onrender.com/contador`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -122,7 +122,7 @@ async function enviarVideo() {
   }
 
   try {
-    const res = await fetch("http://127.0.0.1:3000/enviarvideo", {
+    const res = await fetch("https://filafacil-api.onrender.com/enviarvideo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -154,7 +154,7 @@ async function enviarVideo() {
 
 function limparVideos() {
     if (confirm("Tem certeza que deseja remover TODOS os vídeos da tabela?")) {
-        fetch('http://localhost:3000/videos/limpar', {
+        fetch('https://filafacil-api.onrender.com/videos/limpar', {
             method: 'DELETE'
         })
         .then(res => res.json())
